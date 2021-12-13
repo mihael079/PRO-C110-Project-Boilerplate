@@ -1,4 +1,4 @@
-# for captureing frames from webcam
+# for capturing frames from webcam
 import cv2
 
 # for processing images
@@ -7,8 +7,8 @@ import numpy as np
 # attaching webcam indexed as 0 with the application software
 camera = cv2.VideoCapture(0)
 
-# while camera is connected with the applcation software
-while camera.isOpened():
+# Infinite loop
+while True:
 
     # requesting a frame from camera
     status , frame = camera.read()
@@ -25,8 +25,8 @@ while camera.isOpened():
         # waiting for key press for 1ms
         code = cv2.waitKey(1)
 
-        # if 'b' key is pressed, break
-        if code  ==  ord('b'):
+        # if 'space' key is pressed, break
+        if code  ==  32:
             break
 
 camera.release()
