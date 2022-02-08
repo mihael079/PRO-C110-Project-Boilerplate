@@ -4,6 +4,11 @@ import cv2
 # To process image array
 import numpy as np
 
+
+# import the tensorflow modules and load the model
+
+
+
 # Attaching Cam indexed as 0, with the application software
 camera = cv2.VideoCapture(0)
 
@@ -18,6 +23,18 @@ while True:
 
 		# Flip the frame
 		frame = cv2.flip(frame , 1)
+		
+		
+		
+		#resize the frame
+		
+		# expand the dimensions
+		
+		# normalize it before feeding to the model
+		
+		# get predictions from the model
+		
+		
 		
 		# displaying the frames captured
 		cv2.imshow('feed' , frame)
