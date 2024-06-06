@@ -1,0 +1,3 @@
+0 rock
+1 sissors
+2 paper
