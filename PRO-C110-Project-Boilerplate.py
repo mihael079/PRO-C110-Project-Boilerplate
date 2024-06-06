@@ -6,7 +6,9 @@ import numpy as np
 
 
 # import the tensorflow modules and load the model
+import tensorflow as tf
 
+model = tf.keras.models.load_model("converted_keras/keras_model.h5")
 
 
 # Attaching Cam indexed as 0, with the application software
@@ -24,27 +26,24 @@ while True:
 		# Flip the frame
 		frame = cv2.flip(frame , 1)
 		
-		
-		
-		#resize the frame
-		
-		# expand the dimensions
-		
-		# normalize it before feeding to the model
-		
-		# get predictions from the model
-		
-		
-		
-		# displaying the frames captured
-		cv2.imshow('feed' , frame)
-
-		# waiting for 1ms
-		code = cv2.waitKey(1)
-		
-		# if space key is pressed, break the loop
-		if code == 32:
-			break
+		ret, frame = vid.read()
+		img =cv2.resize(frame,(224,224))
+		testimg = np.array(img,dtype=np.float32)
+		print(testimg)
+		testimg=np.expand_dims(testimg,axis=0)
+		print(testimg)
+		normalisedimages =testimg/255.0
+		prediction=model.predict(normalisedimages)
+		print("Prediction: ",prediction)
+		  
+		    # Display the resulting frame
+		cv2.imshow('frame', frame)
+		      
+		    # Quit window with spacebar
+		key = cv2.waitKey(1)
+		    
+		if key == 32:
+		    break
 
 # release the camera from the application software
 camera.release()
